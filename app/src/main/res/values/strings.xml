@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">PokeGnomeGO</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Strona główna</string>
+    <string name="second_fragment_label">GnomeBall</string>
+    <string name="third_fragment_label">GnomeBall</string>
+    <string name="gnomeball">GnomeBall</string>
+    <string name="map">Mapa</string>
+    <string name="shake">Potrząśnij!</string>
+    <string name="achievements">GnomeDex</string>
+    <string name="previous">Powrót</string>
+    <string name="take_photo">Zrób zdjęcie</string>
+    <string name="profile">Twój profil</string>
+    <string name="back">Powrót</string>
+
+    <string name="welcome">
+        Witaj użytkowniku aplikacji PokeGnomeGO!"\n"
+        Każdego dnia możesz wylosować lokalizację krasnala."\n"
+        Po wylosowaniu udaj się na wskazane miejsce i zrób zdjęcie znalezionej figurki."\n"
+        Twoim zadaniem jest zebrać je wszystkie!"\n"
+        Powodzenia!
+    </string>
+
+    <string name="forum_welcome">
+        Zobacz wszystkie krasnale i daj znać innym, które najbardziej chcesz zdobyć!"\n"
+    </string>
+
+    <string name="profile_message">
+        Sprawdź jak radzisz sobie w świecie łowców gnomów!"\n"
+    </string>
+
+    <string name="today_gnome">
+        Wylosuj swojego krasnala na dziś!"\n"
+    </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
