@@ -40,7 +40,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         binding.buttonMyPhotos.setOnClickListener {
-            loadFragment(ThirdFragment())
+            loadFragment(MyPhotosFragment())
         }
 
         binding.buttonRank.setOnClickListener {

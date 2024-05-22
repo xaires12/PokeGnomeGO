@@ -1,27 +1,24 @@
 package com.example.pokegnomego
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
+import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.commit
 import androidx.navigation.fragment.findNavController
 import com.example.pokegnomego.databinding.FragmentThirdBinding
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ThirdFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 
 
 class ThirdFragment : Fragment() {
 
     private var _binding: FragmentThirdBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
 
@@ -38,12 +35,42 @@ class ThirdFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonThird.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        binding.imageviewFirst.setOnClickListener {
+            val comFragment = CommentsFragment()
+            parentFragmentManager.commit {
+                replace(R.id.whatever, comFragment)
+                addToBackStack(null)
+            }
+        }
+        binding.imageviewSecond.setOnClickListener {
+            val comFragment = CommentsGolebnikFragment()
+            parentFragmentManager.commit {
+                replace(R.id.whatever, comFragment)
+                addToBackStack(null)
+            }
+        }
+        binding.imageviewThird.setOnClickListener {
+            val comFragment = CommentsSpiochFragment()
+            parentFragmentManager.commit {
+                replace(R.id.whatever, comFragment)
+                addToBackStack(null)
+            }
+        }
+        binding.imageviewFourth.setOnClickListener {
+            val comFragment = CommentsBibliofilFragment()
+            parentFragmentManager.commit {
+                replace(R.id.whatever, comFragment)
+                addToBackStack(null)
+            }
+        }
+        binding.imageviewFifth.setOnClickListener {
+            val comFragment = CommentsGrunwaldekFragment()
+            parentFragmentManager.commit {
+                replace(R.id.whatever, comFragment)
+                addToBackStack(null)
+            }
         }
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

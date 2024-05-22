@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import com.example.pokegnomego.R
 import com.example.pokegnomego.databinding.FragmentSecondBinding
@@ -29,9 +30,21 @@ class SecondFragment : Fragment() {
     ): View {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
+
+        val buttonX: Button = binding.buttonSecond
+        val imageY: ImageView = binding.gnomeShaker
+
+        // Set an OnClickListener on the button
+        buttonX.setOnClickListener {
+            // Change the image resource of the ImageView
+            imageY.setImageResource(R.drawable.android)
+        }
+
         return binding.root
 
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
