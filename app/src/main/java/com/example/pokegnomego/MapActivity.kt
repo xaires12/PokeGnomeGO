@@ -1,7 +1,5 @@
 package com.example.pokegnomego
 
-import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -12,6 +10,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -36,8 +36,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var locationCallback: LocationCallback
     private val permissionCode = 101
     private lateinit var WroclawMap: GoogleMap
-    private lateinit var currentPhotoPath: String
-    private val REQUEST_IMAGE_CAPTURE = 1
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
@@ -54,9 +54,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             finish()
         }
 
+
         val photoButton = findViewById<Button>(R.id.button_photo)
         photoButton.setOnClickListener {
-            dispatchTakePictureIntent()
+
         }
 
         locationRequest = LocationRequest.create().apply {
@@ -77,49 +78,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
-    }
-
-    private fun dispatchTakePictureIntent() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                val photoFile: File? = try {
-                    createImageFile()
-                } catch (ex: IOException) {
-                    Log.e("MapActivity", "Error occurred while creating the file", ex)
-                    null
-                }
-                photoFile?.also {
-                    val photoURI: Uri = FileProvider.getUriForFile(
-                        this,
-                        "com.example.pokegnomego.fileprovider",
-                        it
-                    )
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-                }
-            }
-        }
-    }
-
-    @Throws(IOException::class)
-    private fun createImageFile(): File {
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())
-        val storageDir: File = getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
-        return File.createTempFile(
-            "JPEG_${timeStamp}_", /* prefix */
-            ".jpg", /* suffix */
-            storageDir /* directory */
-        ).apply {
-            currentPhotoPath = absolutePath
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            val imageView = findViewById<ImageView>(R.id.imageview_current_photo)
-            imageView.setImageURI(Uri.parse(currentPhotoPath))
-        }
     }
 
     override fun onMapReady(MyMap: GoogleMap) {
@@ -151,4 +109,5 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onPause()
         stopLocationUpdates()
     }
+
 }
