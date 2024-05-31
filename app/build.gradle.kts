@@ -53,6 +53,8 @@ dependencies {
     api("androidx.fragment:fragment-ktx:1.3.0-alpha07")
     implementation("androidx.activity:activity:1.9.0")
     implementation("androidx.activity:activity-ktx:1.9.0")
+    implementation ("com.github.bumptech.glide:glide:4.13.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.13.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

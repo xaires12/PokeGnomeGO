@@ -33,14 +33,14 @@ class ProfileActivity : AppCompatActivity() {
         val back = findViewById<Button>(R.id.button_back2)
         back.setOnClickListener {
             val i = Intent(this@ProfileActivity, MainActivity::class.java)
-
             startActivity(i)
-
             finish()
         }
 
         binding.buttonMyPhotos.setOnClickListener {
-            loadFragment(MyPhotosFragment())
+            val i = Intent(this@ProfileActivity, PhotoGalleryActivity::class.java)
+            startActivity(i)
+            finish()
         }
 
         binding.buttonRank.setOnClickListener {
