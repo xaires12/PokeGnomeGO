@@ -9,13 +9,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokegnomego.com.example.pokegnomego.api.RetrofitInstance
+import com.example.pokegnomego.com.example.pokegnomego.api.User
 import com.example.pokegnomego.databinding.FragmentRankingBinding
 import com.example.pokegnomego.com.example.pokegnomego.api.UserService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
-data class User(val login: String, val points: Int)
 
 class RankingFragment : Fragment() {
 
@@ -23,7 +22,6 @@ class RankingFragment : Fragment() {
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    // nienawidze kotlina
     }
 
     override fun onCreateView(

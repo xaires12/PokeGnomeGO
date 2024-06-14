@@ -12,17 +12,11 @@ import com.example.pokegnomego.R
 import com.example.pokegnomego.databinding.FragmentSecondBinding
 
 
-
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,16 +24,12 @@ class SecondFragment : Fragment() {
     ): View {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
-
-        val buttonX: Button = binding.buttonSecond
-        val imageY: ImageView = binding.gnomeShaker
+        val buttonShake: Button = binding.buttonSecond
 
         // Set an OnClickListener on the button
-        buttonX.setOnClickListener {
-            // Change the image resource of the ImageView
-            imageY.setImageResource(R.drawable.android)
-        }
+        buttonShake.setOnClickListener {
 
+        }
         return binding.root
 
     }

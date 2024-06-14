@@ -3,8 +3,10 @@ package com.example.pokegnomego
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pokegnomego.com.example.pokegnomego.api.User
 import com.example.pokegnomego.com.example.pokegnomego.api.UserService
 import com.example.pokegnomego.databinding.ItemUserBinding
+
 
 class RankingAdapter(private val users: List<User>) : RecyclerView.Adapter<RankingAdapter.UserViewHolder>() {
 
@@ -17,7 +19,6 @@ class RankingAdapter(private val users: List<User>) : RecyclerView.Adapter<Ranki
         val user = users[position]
         holder.bind(user)
     }
-    // nienawidze kotlina
 
     override fun getItemCount() = users.size
 
