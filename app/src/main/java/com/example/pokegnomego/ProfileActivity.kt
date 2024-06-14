@@ -44,7 +44,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         binding.buttonRank.setOnClickListener {
-            loadFragment(ThirdFragment())
+            loadFragment(RankingFragment())
         }
 
         binding.buttonMyAchievements.setOnClickListener {

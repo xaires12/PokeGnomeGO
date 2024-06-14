@@ -1,39 +1,61 @@
 package com.example.pokegnomego
 
 import android.os.Bundle
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import com.example.pokegnomego.databinding.FragmentAchievementsBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.pokegnomego.com.example.pokegnomego.api.RetrofitInstance
 import com.example.pokegnomego.databinding.FragmentRankingBinding
-import com.example.pokegnomego.databinding.FragmentSecondBinding
+import com.example.pokegnomego.com.example.pokegnomego.api.UserService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
+data class User(val login: String, val points: Int)
 
 class RankingFragment : Fragment() {
 
     private var _binding: FragmentRankingBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
+    ): View? {
         _binding = FragmentRankingBinding.inflate(inflater, container, false)
-
-        return binding.root
+        loadRankingData()
+        return inflater.inflate(R.layout.fragment_ranking, container, false)
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun loadRankingData() {
+        RetrofitInstance.api.getUsers().enqueue(object : Callback<List<User>> {
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                if (response.isSuccessful) {
+                    val users = response.body() ?: emptyList()
+                    updateRankingView(users)
+                }
+            }
+
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
+    }
+
+    private fun updateRankingView(users: List<User>) {
+        val sortedUsers = users.sortedByDescending { it.visit_count }
+        val rankingRecyclerView = binding.rankingRecyclerView
+        rankingRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        rankingRecyclerView.adapter = RankingAdapter(sortedUsers)
     }
 
 }
