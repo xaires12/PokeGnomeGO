@@ -17,6 +17,7 @@ class RankingAdapter(private val users: List<User>) : RecyclerView.Adapter<Ranki
         val user = users[position]
         holder.bind(user)
     }
+    // nienawidze kotlina
 
     override fun getItemCount() = users.size
 

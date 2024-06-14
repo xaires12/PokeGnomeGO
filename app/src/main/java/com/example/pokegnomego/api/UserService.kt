@@ -8,4 +8,5 @@ data class User(val login: String, val visit_count: Int)
 interface UserService {
     @GET("users")
     fun getUsers(): Call<List<User>>
+    // nienawidze kotlina
 }

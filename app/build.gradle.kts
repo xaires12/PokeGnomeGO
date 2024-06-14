@@ -37,6 +37,7 @@ android {
         viewBinding = true
     }
 }
+// nienawidze kotlina
 
 dependencies {
     implementation(libs.androidx.core.ktx)
